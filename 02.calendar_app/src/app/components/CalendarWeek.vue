@@ -1,0 +1,39 @@
+<template>
+    <div id="calendar-week" class="container">
+        <!-- Some code -->
+        <div class="columns is-mobile">
+            <CalendarDay
+                v-for="day in sharedState.seedData"
+                v-bind:key="day.id"
+                v-bind:day="day"
+            />
+        </div>
+    </div>
+</template>
+
+<script>
+import { store } from "../store.js";
+import CalendarDay from "./CalendarDay.vue";
+
+export default {
+    name: "CalendarWeek",
+    data() {
+        return {
+            sharedState: store.state
+        };
+    },
+    components: {
+        CalendarDay
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+#calendar-week {
+    // SCSS for calandar week
+    margin-bottom: 50px;
+    .column {
+        padding: 0 0 0 0;
+    }
+}
+</style>
